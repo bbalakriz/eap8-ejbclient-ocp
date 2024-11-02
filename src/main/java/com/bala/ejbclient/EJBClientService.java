@@ -36,6 +36,8 @@ public class EJBClientService {
             // Perform JNDI lookup
             final RemoteCalculator statelessRemoteCalculator = (RemoteCalculator) context
                     .lookup(getEJBBaseJndiName() + "/CalculatorBean!" + RemoteCalculator.class.getName());
+
+            System.out.println(statelessRemoteCalculator!=null? statelessRemoteCalculator.toString(): "statelessRemoteCalculator is null");                    
             System.out.println("Obtained a remote stateless calculator for invocation");
 
             // invoke on the remote calculator

@@ -21,10 +21,16 @@ public class EJBClientService {
                     "org.wildfly.naming.client.WildFlyInitialContextFactory");
             // use HTTP upgrade, an initial upgrade requests is sent to upgrade to the
             // remoting protocol
-            jndiProperties.put(Context.PROVIDER_URL, getProviderURl());
+            String OPENSHIFT_JNDI_PROVIDER_URL = System.getenv("JAVA_NAMING_PROVIDER_URL");
+
+            jndiProperties.put(Context.PROVIDER_URL,
+                    OPENSHIFT_JNDI_PROVIDER_URL != null ? OPENSHIFT_JNDI_PROVIDER_URL : getProviderURl());
             jndiProperties.put(Context.SECURITY_PRINCIPAL, "quickstartUser");
             jndiProperties.put(Context.SECURITY_CREDENTIALS, "quickstartPwd1!");
-    
+
+            // Properties jndiProperties = new Properties();
+            // jndiProperties.load(this.getClass().getClassLoader().getResourceAsStream("jndi.properties"));
+
             final Context context = new InitialContext(jndiProperties);
 
             // Perform JNDI lookup

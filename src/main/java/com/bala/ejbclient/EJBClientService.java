@@ -43,12 +43,11 @@ public class EJBClientService {
             // invoke on the remote calculator
             int a = 204;
             int b = 340;
-            System.out.println(
-                    "Adding " + a + " and " + b + " via the remote stateless calculator deployed on the server");
-
             int sum = statelessRemoteCalculator.add(a, b);
             System.out.println("Remote calculator returned sum = " + sum);
 
+            System.out.println(
+                    "Adding " + a + " and " + b + " via the remote stateless calculator deployed on the server");
             // try one more invocation, this time for subtraction
             int num1 = 3434;
             int num2 = 2332;

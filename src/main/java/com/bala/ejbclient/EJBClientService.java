@@ -27,6 +27,11 @@ public class EJBClientService {
                     OPENSHIFT_JNDI_PROVIDER_URL != null ? OPENSHIFT_JNDI_PROVIDER_URL : getProviderURl());
             jndiProperties.put(Context.SECURITY_PRINCIPAL, "quickstartUser");
             jndiProperties.put(Context.SECURITY_CREDENTIALS, "quickstartPwd1!");
+            jndiProperties.put("jboss.naming.client.connect.options.org.xnio.Options.SASL_POLICY_NOPLAINTEXT", "false");
+            jndiProperties.put("jboss.naming.client.connect.options.org.xnio.Options.SSL_STARTTLS", "false");
+            jndiProperties.put("jboss.naming.client.connect.options.org.xnio.Options.SSL_ENABLED", "false");
+            jndiProperties.put("jboss.naming.client.connect.options.org.xnio.Options.SASL_POLICY_NOANONYMOUS", "false");
+    
 
             // Properties jndiProperties = new Properties();
             // jndiProperties.load(this.getClass().getClassLoader().getResourceAsStream("jndi.properties"));
